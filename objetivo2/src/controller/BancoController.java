@@ -101,15 +101,18 @@ public class BancoController {
         System.out.println("\ng)\n");
 
         contas.sort(Comparator.comparingDouble(Conta::getSaldo).reversed());
-        System.out.println("Contas em ordem decrescente:" + contas + "\n");
+        System.out.println("Contas em ordem decrescente:\n" + contas + "\n");
 
-        List<ContaCorrente> contaCorrentes = new ArrayList<>();
-        contaCorrentes.add(cc1);
-        contaCorrentes.add(cc2);
-        contaCorrentes.add(cc3);
+        System.out.println("Associados com conta no sistema:");
 
-        System.out.println("\nConta com maior saldo:\n");
-        System.out.println("Associados com conta no sistema: \n" + contaCorrentes);
+        contas.forEach(c -> {
+            if (c instanceof AssociadoVip){
+                System.out.println(c);
+            }
+        });
+
+
+        System.out.println("\nConta com maior saldo:");
         Conta maiorSaldo = Collections.max(contas, Comparator.comparing(Conta::getSaldo));
         contas.forEach(c -> {
             if(c.getSaldo() >= maiorSaldo.getSaldo()){
