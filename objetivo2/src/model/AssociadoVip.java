@@ -6,5 +6,5 @@ public interface AssociadoVip {
 
     public double lucros(int qdeCotas, double valorCota);
 
-
+    public int getQdeCotas();
 }

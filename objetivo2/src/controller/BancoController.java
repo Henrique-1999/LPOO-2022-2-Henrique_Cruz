@@ -77,18 +77,13 @@ public class BancoController {
 
         System.out.println("\nf)\n");
 
-        List<Associado> associados = new ArrayList<>();
-        associados.add(a1);
-        associados.add(a2);
-        associados.add(a3);
+        avips.sort(Comparator.comparingInt(AssociadoVip::getQdeCotas).reversed());
 
-        associados.sort(Comparator.comparingInt(Associado::getQdeCotas).reversed());
-
-        System.out.println("\nAssociados em ordem drecrescente:\n" + associados);
+        System.out.println("\nAssociados em ordem decrescente:\n" + avips);
 
         System.out.println("\nAssociados com maior quantidade de cotas:\n");
-        Associado maiorQdeCotas = Collections.max(associados, Comparator.comparing(Associado::getQdeCotas));
-        associados.forEach(assoc -> {
+        AssociadoVip maiorQdeCotas = Collections.max(avips, Comparator.comparing(AssociadoVip::getQdeCotas));
+        avips.forEach(assoc -> {
             if(assoc.getQdeCotas() >= maiorQdeCotas.getQdeCotas()){
                 System.out.println(assoc);
             }
