@@ -77,5 +77,18 @@ public abstract class Funcionario {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "matricula=" + matricula +
+                ", nome='" + nome + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cep='" + cep + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
 }
 

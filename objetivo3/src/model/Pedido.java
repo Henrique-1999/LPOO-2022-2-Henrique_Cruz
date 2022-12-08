@@ -88,4 +88,17 @@ public class Pedido {
     public void setItens(List<Item> itens) {
         this.itens = itens;
     }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "numero=" + numero +
+                ", data=" + data +
+                ", valor=" + valor +
+                ", vendedor=" + vendedor +
+                ", tipo=" + tipo +
+                ", produto=" + produto +
+                ", itens=" + itens +
+                '}';
+    }
 }

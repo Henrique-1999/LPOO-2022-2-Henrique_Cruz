@@ -42,4 +42,12 @@ public class Vendedor extends Funcionario{
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
+
+    @Override
+    public String toString() {
+        return "Vendedor{" +
+                "local='" + local + '\'' +
+                ", pedidos=" + pedidos +
+                '}';
+    }
 }
