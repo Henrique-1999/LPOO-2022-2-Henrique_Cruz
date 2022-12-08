@@ -9,27 +9,17 @@ public class Pedido {
     private double valor;
     private Vendedor vendedor;
     private Tipo tipo;
-    private Produto produto;
     List<Item> itens;
 
     public Pedido() {
     }
 
-    public Pedido(int numero, Date data, double valor, Tipo tipo, Produto produto) {
-        this.numero = numero;
-        this.data = data;
-        this.valor = valor;
-        this.tipo = tipo;
-        this.produto = produto;
-    }
-
-    public Pedido(int numero, Date data, double valor, Vendedor vendedor, Tipo tipo, Produto produto, List<Item> itens) {
+    public Pedido(int numero, Date data, double valor, Vendedor vendedor, Tipo tipo, List<Item> itens) {
         this.numero = numero;
         this.data = data;
         this.valor = valor;
         this.vendedor = vendedor;
         this.tipo = tipo;
-        this.produto = produto;
         this.itens = itens;
     }
 
@@ -73,14 +63,6 @@ public class Pedido {
         this.tipo = tipo;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
     public List<Item> getItens() {
         return itens;
     }
@@ -97,7 +79,6 @@ public class Pedido {
                 ", valor=" + valor +
                 ", vendedor=" + vendedor +
                 ", tipo=" + tipo +
-                ", produto=" + produto +
                 ", itens=" + itens +
                 '}';
     }
