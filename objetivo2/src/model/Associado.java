@@ -9,6 +9,7 @@ public class Associado implements AssociadoVip{
     public double lucro;
 
     public double lucros(int qdeCotas, double valorCota) {
+        lucro= qdeCotas * valorCota;
         return lucro;
 
     }

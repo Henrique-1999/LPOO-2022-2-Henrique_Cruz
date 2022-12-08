@@ -2,9 +2,8 @@ package model;
 
 public interface AssociadoVip {
 
-    public double valorCota = 2.47;
+   double lucros(int qdeCotas, double valorCota);
 
-    public double lucros(int qdeCotas, double valorCota);
-
-    public int getQdeCotas();
+   int getQdeCotas();
 }
+
