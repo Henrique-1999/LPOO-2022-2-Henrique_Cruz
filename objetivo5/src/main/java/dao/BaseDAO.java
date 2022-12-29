@@ -14,7 +14,7 @@ public class BaseDAO {
             final String url = "jdbc:mariadb://localhost:3306/objetivo5";
             //argumentos: url para o banco, usuário, senha.
             //retorna um objeto da classe Connection (do pacote java.sql -> que segue a especificação JDBC).
-            return DriverManager.getConnection(url, "mariadb", "mariadb");
+            return DriverManager.getConnection(url, "aluno", "senha5");
         } catch (SQLException e) {
             e.printStackTrace();
             return null; //se não conectar, retorna null.
