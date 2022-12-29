@@ -6,24 +6,14 @@ public class Item {
     private int codItem;
     private double desconto;
     private int quantidade;
-    private List<Pedido> pedidos;
     private Produto produto;
 
     public Item() {
     }
-
     public Item(int codItem, double desconto, int quantidade, Produto produto) {
         this.codItem = codItem;
         this.desconto = desconto;
         this.quantidade = quantidade;
-        this.produto = produto;
-    }
-
-    public Item(int codItem, double desconto, int quantidade, List<Pedido> pedidos, Produto produto) {
-        this.codItem = codItem;
-        this.desconto = desconto;
-        this.quantidade = quantidade;
-        this.pedidos = pedidos;
         this.produto = produto;
     }
 
@@ -51,14 +41,6 @@ public class Item {
         this.quantidade = quantidade;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
     public Produto getProduto() {
         return produto;
     }
@@ -67,13 +49,12 @@ public class Item {
         this.produto = produto;
     }
 
-    @Override
-    public String toString() {
+    @java.lang.Override
+    public java.lang.String toString() {
         return "Item{" +
                 "codItem=" + codItem +
                 ", desconto=" + desconto +
                 ", quantidade=" + quantidade +
-                ", pedidos=" + pedidos +
                 ", produto=" + produto +
                 '}';
     }

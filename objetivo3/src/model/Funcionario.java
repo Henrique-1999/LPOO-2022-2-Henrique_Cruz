@@ -1,13 +1,13 @@
 package model;
 
 public abstract class Funcionario {
-    private int matricula;
-    private String nome;
-    private String endereco;
-    private String bairro;
-    private String cep;
-    private String cidade;
-    private String estado;
+    protected int matricula;
+    protected String nome;
+    protected String endereco;
+    protected String bairro;
+    protected String cep;
+    protected String cidade;
+    protected String estado;
 
     public Funcionario() {
     }

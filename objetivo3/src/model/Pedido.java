@@ -1,25 +1,24 @@
 package model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Pedido {
     private int numero;
-    private Date data;
+    private LocalDate data = LocalDate.now();
     private double valor;
     private Vendedor vendedor;
-    private Tipo tipo;
-    List<Item> itens;
-
+    private Tipo tipo = Tipo.atendido;
+    List<Item>itens;
     public Pedido() {
     }
 
-    public Pedido(int numero, Date data, double valor, Vendedor vendedor, Tipo tipo, List<Item> itens) {
+    public Pedido(int numero, double valor, Vendedor vendedor, List<Item> itens) {
         this.numero = numero;
-        this.data = data;
         this.valor = valor;
         this.vendedor = vendedor;
-        this.tipo = tipo;
         this.itens = itens;
     }
 
@@ -31,11 +30,11 @@ public class Pedido {
         this.numero = numero;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -77,7 +76,7 @@ public class Pedido {
                 "numero=" + numero +
                 ", data=" + data +
                 ", valor=" + valor +
-                ", vendedor=" + vendedor +
+                ", vendedor=" + vendedor.nome +
                 ", tipo=" + tipo +
                 ", itens=" + itens +
                 '}';

@@ -48,6 +48,14 @@ public class Vendedor extends Funcionario{
         return "Vendedor{" +
                 "local='" + local + '\'' +
                 ", pedidos=" + pedidos +
+                ", matricula=" + matricula +
+                ", nome='" + nome + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cep='" + cep + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
                 '}';
     }
+
 }
