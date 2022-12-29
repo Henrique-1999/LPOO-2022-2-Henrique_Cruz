@@ -216,7 +216,7 @@ public class AutomovelDAO extends BaseDAO {
         //Testes
 
         //select
-        //System.out.println("\n automoveis no banco" + AutomovelDAO.selectAutomovel());
+        System.out.println("\n automoveis no banco" + AutomovelDAO.selectAutomovel());
 
         //select por codautomovel
         //System.out.println(selectAutomovelByCodAutomovel(3));
