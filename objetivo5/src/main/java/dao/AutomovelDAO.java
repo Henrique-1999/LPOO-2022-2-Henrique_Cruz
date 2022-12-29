@@ -216,7 +216,7 @@ public class AutomovelDAO extends BaseDAO {
         //Testes
 
         //select
-        System.out.println("\n automoveis no banco" + AutomovelDAO.selectAutomovel());
+        //System.out.println("\n automoveis no banco" + AutomovelDAO.selectAutomovel());
 
         //select por codautomovel
         //System.out.println(selectAutomovelByCodAutomovel(3));
@@ -234,21 +234,21 @@ public class AutomovelDAO extends BaseDAO {
         //System.out.println(selectAutomovelByNr_Portas(2));
 
         //select por valor de locação
-        //System.out.println(selectAutomovelByValor_Locacao(4000.00));
+        //System.out.println(selectAutomovelByValor_Locacao(3000.00));
 
         //insert
-        //Automovel automovel = new Automovel("abc","vermelho", 2, 1, 4321, 321, "edcba", 3000.00,1);
-        //System.out.println(AutomovelDAO.insertAutomovel(automovel));
-        //System.out.println("\nAutomovel criado: " + AutomovelDAO.selectAutomovelByCodAutomovel(5));
+//        Automovel automovel = new Automovel("abc","vermelho", 2, 1, 4321, 321, "edcba", 3000.00,1);
+//        System.out.println(AutomovelDAO.insertAutomovel(automovel));
+//        System.out.println("\nAutomovel criado: " + AutomovelDAO.selectAutomovelByCodAutomovel(5));
 
         //update
-        //Automovel automovel = new Automovel("cab","verde", 2, 2, 654321, 123456534, "naosei", 4000.00,1);
-        //updateAutomovel(automovel,4);
-        //System.out.println("\nAutomovel atualizado: " + AutomovelDAO.selectAutomovelByCodAutomovel(4));
-
-        //Delete
-        //DeleteAutomovel(5);
-        //System.out.println("\nAutomovel deletado: " + AutomovelDAO.selectAutomovelByCodAutomovel(5));
+//        Automovel automovel = new Automovel("aaa","branco", 4, 2, 0, 123456534, "dfr567", 1000.00,1);
+//        updateAutomovel(automovel,4);
+//        System.out.println("\nAutomovel atualizado: " + AutomovelDAO.selectAutomovelByCodAutomovel(4));
+//
+//        //Delete
+//        DeleteAutomovel(6);
+//        System.out.println("\nAutomovel deletado: " + AutomovelDAO.selectAutomovelByCodAutomovel(6));
 
     }
 

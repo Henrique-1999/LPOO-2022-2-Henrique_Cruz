@@ -143,7 +143,7 @@ public class Automovel {
 
     @Override
     public String toString() {
-        return "Automovel{" +
+        return "\nAutomovel{" +
                 "codautomovel=" + codautomovel +
                 ", placa='" + placa + '\'' +
                 ", cor='" + cor + '\'' +
