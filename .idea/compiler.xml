@@ -6,11 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="objetivo5" />
         <module name="Objetivo5" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="objetivo5" target="14" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -30,10 +30,10 @@ public class AutomovelDAO extends BaseDAO {
         }
     }
 
-    public static Automovel selectAutomovelById(int id) {
-        final String sql = "SELECT * FROM automovel WHERE id=?";
+    public static Automovel selectAutomovelByCodAutomovel(int cod) {
+        final String sql = "SELECT * FROM automovel WHERE codautomovel=?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
-            pstmt.setInt(1, id);
+            pstmt.setInt(1, cod);
             ResultSet rs = pstmt.executeQuery();
             Automovel automovel = null;
             if (rs.next()) {
@@ -51,7 +51,7 @@ public class AutomovelDAO extends BaseDAO {
         final String sql = "SELECT * FROM automovel WHERE placa LIKE ? ORDER BY placa";
         try // try-with-resource
                 (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
-            pstmt.setString(1, placa.toLowerCase() + "%");
+            pstmt.setString(1, "%" + placa.toLowerCase() + "%");
             ResultSet rs = pstmt.executeQuery();
             List<Automovel> automovelList = new ArrayList<>();
             while (rs.next()) {
@@ -68,7 +68,7 @@ public class AutomovelDAO extends BaseDAO {
         final String sql = "SELECT * FROM automovel WHERE cor LIKE ? ";
         try // try-with-resource
                 (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
-            pstmt.setString(1, cor.toLowerCase() + "%");
+            pstmt.setString(1, "%" + cor.toLowerCase() + "%");
             ResultSet rs = pstmt.executeQuery();
             List<Automovel> automovelList = new ArrayList<>();
             while (rs.next()) {
@@ -132,7 +132,7 @@ public class AutomovelDAO extends BaseDAO {
 
 
     public static boolean insertAutomovel(Automovel automovel) {
-        final String sql = "INSERT INTO automovel (placa, cor, nr_portas, tipo_combustivel, quilometragem,renavam,chassi,valor_locacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        final String sql = "INSERT INTO automovel (placa, cor, nr_portas, tipo_combustivel, quilometragem,renavam,chassi,valor_locacao,codmodelo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (
                 Connection conn = getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -146,6 +146,7 @@ public class AutomovelDAO extends BaseDAO {
             pstmt.setLong(6, automovel.getRenavan());
             pstmt.setString(7, automovel.getChassi());
             pstmt.setDouble(8, automovel.getValor_locacao());
+            pstmt.setInt(9, automovel.getCodmodelo());
             int count = pstmt.executeUpdate();
             return count > 0;
 
@@ -155,8 +156,8 @@ public class AutomovelDAO extends BaseDAO {
         }
     }
 
-    public static boolean updateAutomovel(Automovel automovel) {
-        final String sql = "UPDATE automovel SET placa=?, cor=?, nr_portas=?, tipo_combustivel=?, quilometragem=?, renavam=?, chassi=?, valor_locacao=?";
+    public static boolean updateAutomovel(Automovel automovel, int cod) {
+        final String sql = "UPDATE automovel SET placa=?, cor=?, nr_portas=?, tipo_combustivel=?, quilometragem=?, renavam=?, chassi=?, valor_locacao=?,codmodelo=? where codautomovel=?";
         try (
                 Connection conn = getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -170,6 +171,8 @@ public class AutomovelDAO extends BaseDAO {
             pstmt.setLong(6, automovel.getRenavan());
             pstmt.setString(7, automovel.getChassi());
             pstmt.setDouble(8, automovel.getValor_locacao());
+            pstmt.setInt(9, automovel.getCodmodelo());
+            pstmt.setInt(10, cod);
             int count = pstmt.executeUpdate();
             return count > 0;
 
@@ -179,10 +182,10 @@ public class AutomovelDAO extends BaseDAO {
         }
     }
 
-    public static boolean DeleteAutomovel(int id) {
-        final String sql = "delete from automovel WHERE id=?";
+    public static boolean DeleteAutomovel(int cod) {
+        final String sql = "delete from automovel WHERE codautomovel=?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
-            pstmt.setInt(1, id);
+            pstmt.setInt(1, cod);
             int count = pstmt.executeUpdate();
             return count > 0;
         } catch (SQLException e) {
@@ -191,9 +194,10 @@ public class AutomovelDAO extends BaseDAO {
         }
     }
 
-    // método utilitário, converte ResultSet na classe de modelo (nesse caso, Cliente)
+    // método utilitário, converte ResultSet na classe de modelo
     private static Automovel resultsetToAutomovel(ResultSet rs) throws SQLException {
         Automovel a = new Automovel();
+        a.setCodautomovel(rs.getInt("codautomovel"));
         a.setPlaca(rs.getString("placa"));
         a.setCor(rs.getString("cor"));
         a.setNrportas(rs.getInt("nr_portas"));
@@ -202,38 +206,51 @@ public class AutomovelDAO extends BaseDAO {
         a.setRenavan(rs.getLong("renavam"));
         a.setChassi(rs.getString("chassi"));
         a.setValor_locacao(rs.getDouble("valor_locacao"));
+        a.setCodmodelo(rs.getInt("codmodelo"));
 
         return a;
     }
 
     public static void main(String[] args) {
-        //System.out.println("\nLista de Clientes");
-        //System.out.println(ClienteDAO.selectClientes());
 
-        //System.out.println("\nCliente pelo id");
-        //System.out.println(ClienteDAO.selectClienteById(1L));
+        //Testes
 
-        //System.out.println("\nClientes pelo nome");
-        //System.out.println(ClienteDAO.selectClientesByName("a"));
+        //select
+        //System.out.println("\n automoveis no banco" + AutomovelDAO.selectAutomovel());
 
-        //System.out.println("\nCliente pela situação");
-        //System.out.println(ClienteDAO.selectClientesBySituacao(true));
+        //select por codautomovel
+        //System.out.println(selectAutomovelByCodAutomovel(3));
 
-        System.out.println("\nCriando um automovel");
-    Automovel automovel = new Automovel("abc","vermelho", 2, 1, 1234, 123, "abcde", 2500.22);
-        System.out.println(AutomovelDAO.insertAutomovel(automovel));
-        System.out.println("\nCliente INSERIDO na base de dados: " + AutomovelDAO.selectAutomovelById(1));
+        //select por placa
+        //System.out.println(selectAutomovelByPlaca("c"));
 
-        //System.out.println("\nAlterando um cliente (o criado recentemente)");
-        //cliente = selectClienteById(3L);
-        //cliente.setNome("Aline Marisa");
-        //cliente.setSobrenome("Vaz");
-        //System.out.println(ClienteDAO.updateCliente(cliente));
-        //System.out.println("\nCliente ALTERADO na base de dados: " + ClienteDAO.selectClienteById(3L));
+        //select por cor
+        //System.out.println(selectAutomovelByCor("vermelho"));
 
-        //System.out.println("\nDeletando um cliente (o criado recentemente)");
-        //System.out.println(softDeleteCliente(3, false));
-        //System.out.println("\nCliente EXCLUÍDO na base de dados: " + ClienteDAO.selectClienteById(3L));
+        //select por tipo de combustivel
+        //System.out.println(selectAutomovelByTipo_Combustivel(1));
+
+        //select por numero de portas
+        //System.out.println(selectAutomovelByNr_Portas(2));
+
+        //select por valor de locação
+        //System.out.println(selectAutomovelByValor_Locacao(4000.00));
+
+        //insert
+        //Automovel automovel = new Automovel("abc","vermelho", 2, 1, 4321, 321, "edcba", 3000.00,1);
+        //System.out.println(AutomovelDAO.insertAutomovel(automovel));
+        //System.out.println("\nAutomovel criado: " + AutomovelDAO.selectAutomovelByCodAutomovel(5));
+
+        //update
+        //Automovel automovel = new Automovel("cab","verde", 2, 2, 654321, 123456534, "naosei", 4000.00,1);
+        //updateAutomovel(automovel,4);
+        //System.out.println("\nAutomovel atualizado: " + AutomovelDAO.selectAutomovelByCodAutomovel(4));
+
+        //Delete
+        //DeleteAutomovel(5);
+        //System.out.println("\nAutomovel deletado: " + AutomovelDAO.selectAutomovelByCodAutomovel(5));
+
     }
+
 
 }

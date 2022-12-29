@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 public class Automovel {
+    private int codautomovel;
     private String placa;
     private String cor;
     private int nrportas;
@@ -12,12 +13,13 @@ public class Automovel {
     private String chassi;
     private double valor_locacao;
     private Modelo modelo;
+    private int codmodelo;
     private List<Locacao> locacaoList;
 
     public Automovel() {
     }
 
-    public Automovel(String placa, String cor, int nrportas, int tipo_combustivel, long quilometragem, long renavan, String chassi, double valor_locacao) {
+    public Automovel(String placa, String cor, int nrportas, int tipo_combustivel, long quilometragem, long renavan, String chassi, double valor_locacao, int codmodelo) {
         this.placa = placa;
         this.cor = cor;
         this.nrportas = nrportas;
@@ -26,9 +28,10 @@ public class Automovel {
         this.renavan = renavan;
         this.chassi = chassi;
         this.valor_locacao = valor_locacao;
+        this.codmodelo = codmodelo;
     }
 
-    public Automovel(String placa, String cor, int nrportas, int tipo_combustivel, long quilometragem, long renavan, String chassi, double valor_locacao, Modelo modelo) {
+    public Automovel(String placa, String cor, int nrportas, int tipo_combustivel, long quilometragem, long renavan, String chassi, double valor_locacao, Modelo modelo, int codmodelo, List<Locacao> locacaoList) {
         this.placa = placa;
         this.cor = cor;
         this.nrportas = nrportas;
@@ -38,18 +41,7 @@ public class Automovel {
         this.chassi = chassi;
         this.valor_locacao = valor_locacao;
         this.modelo = modelo;
-    }
-
-    public Automovel(String placa, String cor, int nrportas, int tipo_combustivel, long quilometragem, long renavan, String chassi, double valor_locacao, Modelo modelo, List<Locacao> locacaoList) {
-        this.placa = placa;
-        this.cor = cor;
-        this.nrportas = nrportas;
-        this.tipo_combustivel = tipo_combustivel;
-        this.quilometragem = quilometragem;
-        this.renavan = renavan;
-        this.chassi = chassi;
-        this.valor_locacao = valor_locacao;
-        this.modelo = modelo;
+        this.codmodelo = codmodelo;
         this.locacaoList = locacaoList;
     }
 
@@ -133,10 +125,27 @@ public class Automovel {
         this.locacaoList = locacaoList;
     }
 
+    public int getCodmodelo() {
+        return codmodelo;
+    }
+
+    public void setCodmodelo(int codmodelo) {
+        this.codmodelo = codmodelo;
+    }
+
+    public int getCodautomovel() {
+        return codautomovel;
+    }
+
+    public void setCodautomovel(int codautomovel) {
+        this.codautomovel = codautomovel;
+    }
+
     @Override
     public String toString() {
         return "Automovel{" +
-                "placa='" + placa + '\'' +
+                "codautomovel=" + codautomovel +
+                ", placa='" + placa + '\'' +
                 ", cor='" + cor + '\'' +
                 ", nrportas=" + nrportas +
                 ", tipo_combustivel=" + tipo_combustivel +
@@ -145,6 +154,7 @@ public class Automovel {
                 ", chassi='" + chassi + '\'' +
                 ", valor_locacao=" + valor_locacao +
                 ", modelo=" + modelo +
+                ", codmodelo=" + codmodelo +
                 ", locacaoList=" + locacaoList +
                 '}';
     }
